@@ -7,7 +7,7 @@ export default function TaskApp() {
 
   const handleSubmit = () => {
     if (text.trim()) {
-      setTasks([...tasks, { id: Date.now(), text }]);
+      setTasks(prev => [...prev, { id: Date.now(), text }]);
       setText("");
     }
   };
@@ -37,6 +37,8 @@ export default function TaskApp() {
           Submit
         </button>
       </div>
+
+      {text && <p>Preview: {text}</p>}
 
       <TaskList tasks={tasks} onDelete={handleDelete}  />
 
